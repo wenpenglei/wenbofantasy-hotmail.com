@@ -25,9 +25,9 @@ class UsersController < ApplicationController
     render :process
   end
 
-  #def test
-    #render :text => "session user id: #{session[:user_id]}"
-  #end
+  def test
+    render :text => "session user id: #{session[:user_id]}"
+  end
 
   def order
     begin 

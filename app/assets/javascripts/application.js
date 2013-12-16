@@ -12,3 +12,20 @@
 //
 //= require jquery
 //= require jquery.validate
+//
+
+
+
+//$(document).ready(function(){
+   //$('#country').val($('#country').attr('data-country'));
+//});
+
+
+$(document).ready(function(){
+   $('#country').val($('#country').attr('data-country'));
+});
+
+$(document).ready(function(){
+   $('#shipping_country').val($('#shipping_country').attr('shipping-country'));
+});
+

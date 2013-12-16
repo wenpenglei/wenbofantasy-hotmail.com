@@ -6,27 +6,27 @@
     <legend>Billing Information</legend>
     <div>
       <label for="name" class="label">Name</label>
-      <input value=<%= @billing_information.name %> name="billing_information[name]" type="text" id="name" size="36">
+      <input value=<%= @billing_information.name %> ""  name="billing_information[name]"    type="text" id="billing_information_name" size="36">
     </div>
     <div>
       <label for="address" class="label">address</label>
-      <input value=<%= @billing_information.address %> name="billing_information[address]" type="text" id="address" size="36">
+      <input value=<%= @billing_information.address %> "" name="billing_information[address]" type="text" id="address" size="36">
     </div>
     <div>
       <label for="city" class="label">City</label>
-      <input value=<%= @billing_information.city %> name="billing_information[city]" type="text" id="city" size="36">
+      <input value=<%= @billing_information.city %>  ""  name="billing_information[city]" type="text" id="city" size="36">
     </div>
     <div>
       <label for="state" class="label">State/Province</label>
-      <input value=<%= @billing_information.state %> name="billing_information[state]" type="text" id="state" size="36">
+      <input value=<%= @billing_information.state %>  ""  name="billing_information[state]" type="text" id="state" size="36">
     </div>
     <div>
       <label for="zip" class="label">postal code</label>
-      <input value=<%= @billing_information.postal_code %> name="billing_information[postal_code]" type="text" id="zip" size="36">
+      <input value=<%= @billing_information.postal_code %> ""  name="billing_information[postal_code]" type="text" id="zip" size="36">
     </div>
     <div>
-      <label for="country" class="label">Country</label>
-      <select name="billing_information[country]">
+      <label for="country" class="label" value>Country</label>
+      <select  name="billing_information[country]"  id="country" data-country="<%= @billing_information.country %>" >
         <option>Choose your country </option>
         <option value="/us/">U.S.A. </option>
         <option value="/us_espanol/">U.S.A. - Español </option>
@@ -253,11 +253,23 @@
       </select>
     </div>
     <div><span class="label">Payment Method</span>
-      <input type="radio" name="billing_information[payment_method]" id="paypal" value="paypal">
+      <% if @billing_information.payment_method == "paypal" %>
+        <input type="radio"  name="billing_information[payment_method]" id="paypal" value="paypal" checked="true" >
+      <% else %>
+        <input type="radio"  name="billing_information[payment_method]" id="paypal" value="paypal" >
+      <% end %>
       <label for="paypal">PayPal</label>
-      <input type="radio" name="billing_information[payment_method]" id="visa" value="visa">
+      <% if @billing_information.payment_method == "visa" %>
+        <input type="radio" name="billing_information[payment_method]" id="visa" value="visa" checked="true">
+      <% else %>
+        <input type="radio" name="billing_information[payment_method]" id="visa" value="visa" >
+      <% end %>
       <label for="visa">Visa</label>
-      <input type="radio" name="billing_information[payment_method]" id="mastercard" value="mastercard">
+      <% if @billing_information.payment_method == "mastercard" %>
+        <input type="radio" name="billing_information[payment_method]" id="mastercard" value="mastercard" checked="true">
+      <% else %>
+        <input type="radio" name="billing_information[payment_method]" id="mastercard" value="mastercard">
+      <% end %>
       <label for="mastercard">MasterCard</label>
     </div>
     <div id="creditCard" class="indent">
@@ -274,33 +286,37 @@
   <fieldset>
     <legend>Shipping Information</legend>
     <div class="indent">
-      <input type="checkbox" name="billing_information[same_as_shipping_information]" id="hideShip">
+      <%  if @billing_information.same_as_shipping_information.present? %> 
+      <input type="checkbox" name="billing_information[same_as_shipping_information]" id="hideShip" checked="same_as_shipping_information">
+     <% else %>
+      <input type="checkbox" name="billing_information[same_as_shipping_information]" id="hideShip" >
+    <% end %>
       <label for="hideShip">Same as billing</label>
     </div>
     <div id="shipping">
       <div>
         <label for="shipName" class="label">Name</label>
-        <input value=<%= @shipping_information.name %> name="shipping_information[name]" type="text" id="shipName" size="36">
+        <input value=<%= @shipping_information.name %> ""  name="shipping_information[name]" type="text" id="shipName" size="36">
       </div>
       <div>
         <label for="shipAddress" class="label">address</label>
-        <input value=<%= @shipping_information.address %> name="shipping_information[address]" type="text" id="shipAddress" size="36">
+        <input value=<%= @shipping_information.address %> "" name="shipping_information[address]" type="text" id="shipAddress" size="36">
       </div>
       <div>
         <label for="shipCity" class="label">City</label>
-        <input value=<%= @shipping_information.city %> name="shipping_information[city]" type="text" id="shipCity" size="36">
+        <input value=<%= @shipping_information.city %> "" name="shipping_information[city]" type="text" id="shipCity" size="36">
       </div>
       <div>
         <label for="shipState" class="label">State/Province</label>
-        <input value=<%= @shipping_information.state %> name="shipping_information[state]" type="text" id="shipState" size="36">
+        <input value=<%= @shipping_information.state %> ""  name="shipping_information[state]" type="text" id="shipState" size="36">
       </div>
       <div>
         <label for="shipZip" class="label">Postal Code</label>
-        <input value=<%= @shipping_information.postal_code %> name="shipping_information[postal_code]" type="text" id="shipZip" size="36">
+        <input value=<%= @shipping_information.postal_code %> "" name="shipping_information[postal_code]" type="text" id="shipZip" size="36">
       </div>
       <div>
         <label for="shipCountry" class="label">Country</label>
-        <select name="shipping_information[country]">
+        <select name="shipping_information[country]"    id="shipping_country" shipping-country="<%= @shipping_information.country %>">
           <option>Choose your country </option>
           <option value="/us/">U.S.A. </option>
           <option value="/us_espanol/">U.S.A. - Español </option>
