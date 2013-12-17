@@ -45,9 +45,9 @@ class UsersController < ApplicationController
       end
       flash[:success] = "Information Saved!"  
       render :process
-    rescue => e
-      flash[:error] = "ERROR"
-      render :text => e.messages
+    #rescue => e
+      #flash[:error] = "ERROR"
+      #render :text => e.messages
     end
   end
 end

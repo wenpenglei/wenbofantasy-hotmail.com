@@ -8,8 +8,17 @@
     <%= link_to "Home Page", root_path %>  
   <% end %>
 </h1>
+
 <% current_user.attributes.each do |key, val| %>
   <p><span style="display:inline-block; width:120px;"class="key"><%= key %></span>: <span class="value"><%= truncate(val.to_s, length: 30) %></span></p>
 <% end %>
-<hr/>
+<br />
+<h1>   billing_information</h1>
+<% current_user.billing_information.attributes.each do |key, val| %>
+  <p><span style="display:inline-block; width:190px;"class="key"><%= key %></span>: <span class="value"><%= truncate(val.to_s, length: 30) %></span></p>
+<% end %>
+<h1>shipping_information</h1>
+<% current_user.shipping_information.attributes.each do |key, val| %>
+  <p><span style="display:inline-block; width:150px;"class="key"><%= key %></span>: <span class="value"><%= truncate(val.to_s, length: 30) %></span></p>
+<% end %>
 <p><%= link_to "Log out", signout_url, method: "delete" %></p>

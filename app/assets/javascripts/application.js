@@ -22,7 +22,7 @@
 
 
 $(document).ready(function(){
-   $('#country').val($('#country').attr('data-country'));
+   $('#billing_information_country').val($('#billing_information_country').attr('cou'));
 });
 
 $(document).ready(function(){
